@@ -13,10 +13,10 @@ plate_thickness = 5;
 translate([0,0,plate_thickness])rotate([0,180,0])difference() {
     union() {
         hull() {
-            translate([-mounting_holes_height/2,-mounting_holes_width/2,0])cylinder(plate_thickness,4,4);
-            translate([-mounting_holes_height/2,mounting_holes_width/2,0])cylinder(plate_thickness,4,4);
-            translate([mounting_holes_height/2,-mounting_holes_width/2,0])cylinder(plate_thickness,4,4);
-            translate([mounting_holes_height/2,mounting_holes_width/2,0])cylinder(plate_thickness,4,4);
+            translate([-mounting_holes_height/2,-mounting_holes_width/2,0])cylinder(plate_thickness,5,5);
+            translate([-mounting_holes_height/2,mounting_holes_width/2,0])cylinder(plate_thickness,5,5);
+            translate([mounting_holes_height/2,-mounting_holes_width/2,0])cylinder(plate_thickness,5,5);
+            translate([mounting_holes_height/2,mounting_holes_width/2,0])cylinder(plate_thickness,5,5);
         }
     }
     
@@ -33,10 +33,10 @@ translate([0,0,plate_thickness])rotate([0,180,0])difference() {
     translate([mounting_holes_height/2,mounting_holes_width / 2,-1])cylinder(30, sh_through/2, sh_through/2);
     translate([mounting_holes_height/2,-mounting_holes_width / 2,-1])cylinder(30, sh_through/2, sh_through/2);
     
-    translate([-mounting_holes_height/2,mounting_holes_width / 2,plate_thickness+1.5-sh_countersink])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
-    translate([-mounting_holes_height/2,-mounting_holes_width / 2,plate_thickness+1.5-sh_countersink])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
-    translate([mounting_holes_height/2,mounting_holes_width / 2,plate_thickness+1.5-sh_countersink])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
-    translate([mounting_holes_height/2,-mounting_holes_width / 2,plate_thickness+1.5-sh_countersink])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
+    translate([-mounting_holes_height/2,mounting_holes_width / 2,plate_thickness+1-sh_countersink])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
+    translate([-mounting_holes_height/2,-mounting_holes_width / 2,plate_thickness+1-sh_countersink])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
+    translate([mounting_holes_height/2,mounting_holes_width / 2,plate_thickness+1-sh_countersink])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
+    translate([mounting_holes_height/2,-mounting_holes_width / 2,plate_thickness+1-sh_countersink])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
     
     
 

@@ -67,7 +67,7 @@ module flange() {
 
 conn_box_width = 10;
 
-difference(){
+rotate([90,0,0])difference(){
     union() {
         translate([0,0,-50/2])flange();
         translate([ifd,0,-50/2])flange();
