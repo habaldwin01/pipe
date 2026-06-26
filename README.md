@@ -1,5 +1,7 @@
 # Particle Imager for Plankton in the Environment
 
+![View of the printable parts of PIPE in Blender](./model_view.jpg)
+
 The PIPE is an almost fully 3D-printable pumped fluid microscope targeting particles in the range of 10-500 micron. As designed, it requires ***zero*** specialist components, with everything being either 3D-printable, readily avalaible to purchase on sites like eBay, or quickly made with a hacksaw and drill.
 
 ## Licence and acknowledgements
