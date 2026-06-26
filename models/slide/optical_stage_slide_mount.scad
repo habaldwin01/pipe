@@ -7,7 +7,7 @@ sh_thread_depth = 6;
 sh_through_wide = 5;
 
 
-mounting_holes_height = 70;
+mounting_holes_height = 68;
 mounting_holes_width = 35;
 
 slide_height = 26.5;
@@ -18,7 +18,14 @@ mount_gap = 30;
 
 translate([0,0,0])difference() {
     union() {
-        translate([-80/2,-12.5,0])cube([80,25,5]);
+        translate([mount_gap/2,0,0])hull() {
+            translate([(-10/2),-50/2,0])cube([10,50,10]);
+            translate([(-15/2),-45/2,0])cube([15,45,10]);
+        }
+        translate([-mount_gap/2,0,0])hull() {
+            translate([(-10/2),-50/2,0])cube([10,50,10]);
+            translate([(-15/2),-45/2,0])cube([15,45,10]);
+        }
         hull() {
             translate([-mounting_holes_height/2,-mounting_holes_width/2,0])cylinder(10,5,5);
             translate([-mounting_holes_height/2,mounting_holes_width/2,0])cylinder(10,5,5);

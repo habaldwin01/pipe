@@ -5,7 +5,7 @@ sh_countersink = 3;
 sh_thread = 2.7;
 
 
-mounting_holes_height = 70;
+mounting_holes_height = 68;
 mounting_holes_width = 35;
 
 slide_height = 26.5;

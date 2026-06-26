@@ -5,7 +5,7 @@ sh_countersink = 3;
 sh_thread = 2.7;
 
 
-mounting_holes_height = 70;
+mounting_holes_height = 68;
 mounting_holes_width = 35;
 
 slide_height = 26.5;
@@ -26,7 +26,7 @@ luer_shoulder_thickness = luer_shoulder_height + luer_o_ring_thickness;
 
 plate_thickness = 2;
 
-glass_shoulder_thickness = 0.5; 
+glass_shoulder_thickness = 1; 
 
 difference() {
     union() {
@@ -37,10 +37,10 @@ difference() {
             translate([mounting_holes_height/2,mounting_holes_width/2,0])cylinder(plate_thickness,5,5);
         }
 
-        translate([-slide_width/2-1, -slide_height/2-1, 0])cube([6,6, plate_thickness+glass_shoulder_thickness]);
-        translate([-slide_width/2-1, slide_height/2-5, 0])cube([6,6, plate_thickness+glass_shoulder_thickness]);
-        translate([slide_width/2-5, -slide_height/2-1, 0])cube([6,6, plate_thickness+glass_shoulder_thickness]);
-        translate([slide_width/2-5, slide_height/2-5, 0])cube([6,6, plate_thickness+glass_shoulder_thickness]);
+        translate([-slide_width/2-0.5, -slide_height/2-1, 0])cube([6,6, plate_thickness+glass_shoulder_thickness]);
+        translate([-slide_width/2-0.5, slide_height/2-5, 0])cube([6,6, plate_thickness+glass_shoulder_thickness]);
+        translate([slide_width/2-5.5, -slide_height/2-1, 0])cube([6,6, plate_thickness+glass_shoulder_thickness]);
+        translate([slide_width/2-5.5, slide_height/2-5, 0])cube([6,6, plate_thickness+glass_shoulder_thickness]);
     }
         
        

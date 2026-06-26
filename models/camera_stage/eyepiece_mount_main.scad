@@ -2,12 +2,10 @@ use <threadlib/threadlib.scad>
 $fn=64;
 
 
-// 6 and 4.5 for M5
-// 5 and 3.6 for M4
-// 4 and 2.7 for M3
 sh_through = 4;
 sh_countersink = 3;
-sh_thread = 2.7;
+sh_thread = 4.5; // 2.7 for tapping, 4.5 for brass insert
+
 
 shoulder_size = 2;
 thickness = 5;
@@ -40,12 +38,8 @@ difference() {
     translate([0,-20,-1])cylinder(50, sh_thread/2, sh_thread/2);
     translate([0,20,-1])cylinder(50, sh_thread/2, sh_thread/2);
     
-    translate([-mounting_holes_height/2,mounting_holes_width/2,-1])cylinder(15, sh_through/2, sh_through/2);
-    translate([mounting_holes_height/2,mounting_holes_width/2,-1])cylinder(15, sh_through/2, sh_through/2);
-    translate([-mounting_holes_height/2,-mounting_holes_width/2,-1])cylinder(15, sh_through/2, sh_through/2);
-    translate([mounting_holes_height/2,-mounting_holes_width/2,-1])cylinder(15, sh_through/2, sh_through/2);
-    translate([-mounting_holes_height/2,mounting_holes_width/2,thickness+1-sh_countersink])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
-    translate([mounting_holes_height/2,mounting_holes_width/2,thickness+1-sh_countersink])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
-    translate([-mounting_holes_height/2,-mounting_holes_width/2,thickness+1-sh_countersink])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
-    translate([mounting_holes_height/2,-mounting_holes_width/2,thickness+1-sh_countersink])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
+    translate([-mounting_holes_height/2,mounting_holes_width/2,-1])cylinder(15, sh_thread/2, sh_thread/2);
+    translate([mounting_holes_height/2,mounting_holes_width/2,-1])cylinder(15, sh_thread/2, sh_thread/2);
+    translate([-mounting_holes_height/2,-mounting_holes_width/2,-1])cylinder(15, sh_thread/2, sh_thread/2);
+    translate([mounting_holes_height/2,-mounting_holes_width/2,-1])cylinder(15, sh_thread/2, sh_thread/2);
 }
