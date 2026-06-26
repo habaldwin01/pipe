@@ -32,6 +32,16 @@ translate([0,0,0])difference() {
             translate([mounting_holes_height/2,-mounting_holes_width/2,0])cylinder(10,5,5);
             translate([mounting_holes_height/2,mounting_holes_width/2,0])cylinder(10,5,5);
         }
+
+        hull() {
+            translate([(-10/2) - 15,-50/2,0])cube([10,50,10]);
+            translate([(-15/2) - 15,-45/2,0])cube([15,45,10]);
+        }
+
+        hull() {
+            translate([(-10/2) + 15,-50/2,0])cube([10,50,10]);
+            translate([(-15/2) + 15,-45/2,0])cube([15,45,10]);
+        }
     }
     
     // optical hole

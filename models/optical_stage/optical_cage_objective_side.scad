@@ -21,8 +21,8 @@ translate([0,0,0])difference() {
     }
     
     
-    // led board inset
-    translate([0,0,5])hull() {
+    // objective board inset
+    translate([0,0,6])hull() {
         
         translate([-led_board_width/2,-led_board_height/2,0])cylinder(15,6,6);
         translate([-led_board_width/2,led_board_height/2,0])cylinder(15,6,6);
