@@ -21,7 +21,7 @@ mirror_module_offset = 0;
 
 on_tube_dia = (tube_diameter / 2) - (slop_adjust * 2) - (shell_thickness/2);
 
-support_angle = 30;
+support_angle = 25.75;
 
 module foot_mount(){
     hull() {
@@ -51,55 +51,55 @@ difference(){
         
         // mount points for condenser
         hull() {
-            translate([(ifd/2) - (20/2),-50/2 - 1 - slop_adjust,0])cube([20,1,shell_thickness]);
-            translate([ifd/2,-40/2,0])cylinder(shell_thickness,8/2,8/2);
+            translate([(ifd/2) - (20/2),-50/2 - 1 - slop_adjust,0])cube([20,1,10]);
+            translate([ifd/2,-40/2,0])cylinder(10,9/2,9/2);
         }
         hull() {
-            translate([(ifd/2) - (20/2),50/2 + slop_adjust,0])cube([20,1,shell_thickness]);
-            translate([ifd/2,40/2,0])cylinder(shell_thickness,8/2,8/2);
+            translate([(ifd/2) - (20/2),50/2 + slop_adjust,0])cube([20,1,10]);
+            translate([ifd/2,40/2,0])cylinder(10,9/2,9/2);
         }
         
         // supports for condenser mount
         hull() {
             rotate([0,0,-90+support_angle])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
-            translate([0,-(50/2) - slop_adjust - (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            translate([31,-(50/2) - slop_adjust - (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
         }
         hull() {
             rotate([0,0,90-support_angle])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
-            translate([0,(50/2) + slop_adjust + (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            translate([31,(50/2) + slop_adjust + (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
         }
         hull() {
             rotate([0,0,-90-support_angle])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
-            translate([0,-(50/2) - slop_adjust - (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            translate([-31,-(50/2) - slop_adjust - (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
         }
         hull() {
             rotate([0,0,90+support_angle])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
-            translate([0,(50/2) + slop_adjust + (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            translate([-31,(50/2) + slop_adjust + (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
         }
         
         
         // mount points for top carrier
         hull() {
-            rotate([0,0,90+15])translate([on_tube_dia,0,0])cylinder(shell_thickness,shell_thickness/2,shell_thickness/2);
-            rotate([0,0,90+25])translate([on_tube_dia,0,0])cylinder(shell_thickness,shell_thickness/2,shell_thickness/2);
-            translate([-40/2,60,0])cylinder(shell_thickness,8/2,8/2);
+            rotate([0,0,90+15])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            rotate([0,0,90+25])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            translate([-40/2,60,0])cylinder(10,10/2,10/2);
         }
         hull() {
-            rotate([0,0,90-15])translate([on_tube_dia,0,0])cylinder(shell_thickness,shell_thickness/2,shell_thickness/2);
-            rotate([0,0,90-25])translate([on_tube_dia,0,0])cylinder(shell_thickness,shell_thickness/2,shell_thickness/2);
-            translate([40/2,60,0])cylinder(shell_thickness,8/2,8/2);
+            rotate([0,0,90-15])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            rotate([0,0,90-25])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            translate([40/2,60,0])cylinder(10,10/2,10/2);
         }
         
         // mount points for bottom structural rail
         hull() {
-            rotate([0,0,-90-15])translate([on_tube_dia,0,0])cylinder(shell_thickness,shell_thickness/2,shell_thickness/2);
-            rotate([0,0,-90-25])translate([on_tube_dia,0,0])cylinder(shell_thickness,shell_thickness/2,shell_thickness/2);
-            translate([-40/2,-60,0])cylinder(shell_thickness,8/2,8/2);
+            rotate([0,0,-90-15])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            rotate([0,0,-90-25])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            translate([-40/2,-60,0])cylinder(10,10/2,10/2);
         }
         hull() {
-            rotate([0,0,-90+15])translate([on_tube_dia,0,0])cylinder(shell_thickness,shell_thickness/2,shell_thickness/2);
-            rotate([0,0,-90+25])translate([on_tube_dia,0,0])cylinder(shell_thickness,shell_thickness/2,shell_thickness/2);
-            translate([40/2,-60,0])cylinder(shell_thickness,8/2,8/2);
+            rotate([0,0,-90+15])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            rotate([0,0,-90+25])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            translate([40/2,-60,0])cylinder(10,10/2,10/2);
         }
 
         rotate([0,0,-45])foot_mount();
@@ -112,16 +112,22 @@ difference(){
     // holes for condenser mount
     translate([mirror_module_offset,0,0]) union() {
         translate([ifd/2,-40/2,-1])cylinder(60,sh_through/2,sh_through/2);
+        translate([ifd/2,-40/2,8])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
         translate([ifd/2,40/2,-1])cylinder(60,sh_through/2,sh_through/2);
+        translate([ifd/2,40/2,8])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
     }
 
     // holes for top rail mount
     translate([-40/2,60,-1])cylinder(60,sh_through/2,sh_through/2);
+    translate([-40/2,60,8])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
     translate([40/2,60,-1])cylinder(60,sh_through/2,sh_through/2);
+    translate([40/2,60,8])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
     
     // holes for bottom rail mount
     translate([-40/2,-60,-1])cylinder(60,sh_through/2,sh_through/2);
+    translate([-40/2,-60,8])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
     translate([40/2,-60,-1])cylinder(60,sh_through/2,sh_through/2);
+    translate([40/2,-60,8])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
 
 
     rotate([0,0,-45])foot_holes();

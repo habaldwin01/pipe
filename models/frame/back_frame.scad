@@ -61,26 +61,26 @@ difference(){
 
         // mount points for top carrier
         hull() {
-            rotate([0,0,90+15])translate([on_tube_dia,0,0])cylinder(shell_thickness,shell_thickness/2,shell_thickness/2);
-            rotate([0,0,90+25])translate([on_tube_dia,0,0])cylinder(shell_thickness,shell_thickness/2,shell_thickness/2);
-            translate([-40/2,60,0])cylinder(shell_thickness,8/2,8/2);
+            rotate([0,0,90+15])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            rotate([0,0,90+25])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            translate([-40/2,60,0])cylinder(10,10/2,10/2);
         }
         hull() {
-            rotate([0,0,90-15])translate([on_tube_dia,0,0])cylinder(shell_thickness,shell_thickness/2,shell_thickness/2);
-            rotate([0,0,90-25])translate([on_tube_dia,0,0])cylinder(shell_thickness,shell_thickness/2,shell_thickness/2);
-            translate([40/2,60,0])cylinder(shell_thickness,8/2,8/2);
+            rotate([0,0,90-15])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            rotate([0,0,90-25])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            translate([40/2,60,0])cylinder(10,10/2,10/2);
         }
         
         // mount points for bottom structural rail
         hull() {
-            rotate([0,0,-90-15])translate([on_tube_dia,0,0])cylinder(shell_thickness,shell_thickness/2,shell_thickness/2);
-            rotate([0,0,-90-25])translate([on_tube_dia,0,0])cylinder(shell_thickness,shell_thickness/2,shell_thickness/2);
-            translate([-40/2,-60,0])cylinder(shell_thickness,8/2,8/2);
+            rotate([0,0,-90-15])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            rotate([0,0,-90-25])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            translate([-40/2,-60,0])cylinder(10,10/2,10/2);
         }
         hull() {
-            rotate([0,0,-90+15])translate([on_tube_dia,0,0])cylinder(shell_thickness,shell_thickness/2,shell_thickness/2);
-            rotate([0,0,-90+25])translate([on_tube_dia,0,0])cylinder(shell_thickness,shell_thickness/2,shell_thickness/2);
-            translate([40/2,-60,0])cylinder(shell_thickness,8/2,8/2);
+            rotate([0,0,-90+15])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            rotate([0,0,-90+25])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            translate([40/2,-60,0])cylinder(10,10/2,10/2);
         }
         
 
@@ -99,12 +99,15 @@ difference(){
 
     // holes for top rail mount
     translate([-40/2,60,-1])cylinder(60,sh_through/2,sh_through/2);
+    translate([-40/2,60,8])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
     translate([40/2,60,-1])cylinder(60,sh_through/2,sh_through/2);
+    translate([40/2,60,8])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
     
     // holes for bottom rail mount
     translate([-40/2,-60,-1])cylinder(60,sh_through/2,sh_through/2);
+    translate([-40/2,-60,8])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
     translate([40/2,-60,-1])cylinder(60,sh_through/2,sh_through/2);
-    
+    translate([40/2,-60,8])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
 
     rotate([0,0,-45])foot_holes();
     rotate([0,0,45])foot_holes();

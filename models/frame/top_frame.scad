@@ -9,10 +9,11 @@ sh_thread = 4.5; // 2.7 for tapping, 4.5 for brass insert
 
 difference() {
     union() {
-        hull() {
+        //hull() {
             translate([40/2,0,0])rotate([-90,0,0])cylinder(frame_length, 5, 5);
             translate([-40/2,0,0])rotate([-90,0,0])cylinder(frame_length, 5, 5);
-        }
+        //}
+        translate([(-40/2),0,-5])cube([40,frame_length,5]);
         translate([0,0,-5])hull() {
             translate([-70/2,frame_length/2,0])cylinder(5, 5, 5);
             translate([70/2,frame_length/2,0])cylinder(5, 5, 5);
