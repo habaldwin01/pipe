@@ -1,4 +1,5 @@
-$fn=64;
+$fa=1;
+$fs=0.5;
 
 sh_through = 4;
 sh_countersink = 3;
@@ -25,23 +26,29 @@ support_angle = 25.75;
 
 module foot_mount(){
     hull() {
-        rotate([0,0,180])translate([-10/2,(tube_diameter/2)-5-shell_thickness-slop_adjust,0])cube([10,5,20]);
-        rotate([0,0,180-3])translate([-10/2,(tube_diameter/2)-0.1-shell_thickness-slop_adjust,0])cube([10,0.1,20]);
-        rotate([0,0,180+3])translate([-10/2,(tube_diameter/2)-0.1-shell_thickness-slop_adjust,0])cube([10,0.1,20]);
+        rotate([0,0,0])translate([-10/2,(tube_diameter/2)-5-shell_thickness-slop_adjust,0])cube([10,5,10]);
+        rotate([0,0,0-3])translate([-10/2,(tube_diameter/2)-0.1-shell_thickness-slop_adjust,0])cube([10,0.1,10]);
+        rotate([0,0,0+3])translate([-10/2,(tube_diameter/2)-0.1-shell_thickness-slop_adjust,0])cube([10,0.1,10]);
     }
 }
 
 module foot_holes() {
-    rotate([0,0,180])translate([0,(tube_diameter/2)-slop_adjust+1,5])rotate([90,0,0])cylinder(20,sh_thread/2,sh_thread/2);
-    rotate([0,0,180])translate([0,(tube_diameter/2)-slop_adjust+1,15])rotate([90,0,0])cylinder(20,sh_thread/2,sh_thread/2);
+    rotate([0,0,0])translate([0,(tube_diameter/2)-slop_adjust+1,5])rotate([90,0,0])cylinder(10,sh_thread/2,sh_thread/2);
+    rotate([0,0,0])translate([0,(tube_diameter/2)-slop_adjust+1,15])rotate([90,0,0])cylinder(10,sh_thread/2,sh_thread/2);
 }
 
-
+module extra_stage_mount(){
+    hull() {
+        translate([0,(tube_diameter/2)-10,0])cylinder(10,10/2,10/2);
+        rotate([0,0,-4])translate([-10/2,(tube_diameter/2)-0.1-shell_thickness-slop_adjust,0])cube([10,0.1,10]);
+        rotate([0,0,+4])translate([-10/2,(tube_diameter/2)-0.1-shell_thickness-slop_adjust,0])cube([10,0.1,10]);
+    }
+}
 
 difference(){
     union() {
         difference() {
-            cylinder(20,(tube_diameter/2-slop_adjust),(tube_diameter/2-slop_adjust));
+            cylinder(10,(tube_diameter/2-slop_adjust),(tube_diameter/2-slop_adjust));
             translate([0,0,-1])cylinder(22,(tube_diameter/2-slop_adjust)-shell_thickness,(tube_diameter/2-slop_adjust)-shell_thickness);
         }
         translate([-bar_width/2,50/2 + slop_adjust,0])cube([bar_width,shell_thickness,10]);
@@ -76,6 +83,10 @@ difference(){
             rotate([0,0,90+support_angle])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
             translate([-31,(50/2) + slop_adjust + (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
         }
+        hull() {
+            translate([-31,(50/2) + slop_adjust + (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            translate([-31,-(50/2) - slop_adjust - (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
+        }
         
         
         // mount points for top carrier
@@ -102,11 +113,12 @@ difference(){
             translate([40/2,-60,0])cylinder(10,10/2,10/2);
         }
 
-        rotate([0,0,-45])foot_mount();
-        rotate([0,0,45])foot_mount();
-        rotate([0,0,-45-90])foot_mount();
-        rotate([0,0,45+90])foot_mount();
+        rotate([0,0,180-45])foot_mount();
+        rotate([0,0,180+45])foot_mount();
         
+        rotate([0,0,180])extra_stage_mount();
+        rotate([0,0,-50])extra_stage_mount();
+        rotate([0,0,50])extra_stage_mount();
     }
 
     // holes for condenser mount
@@ -130,9 +142,11 @@ difference(){
     translate([40/2,-60,8])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
 
 
-    rotate([0,0,-45])foot_holes();
-    rotate([0,0,45])foot_holes();
-    rotate([0,0,-45-90])foot_holes();
-    rotate([0,0,45+90])foot_holes();
+    rotate([0,0,180-45])foot_holes();
+    rotate([0,0,180+45])foot_holes();
+    
+    rotate([0,0,180])translate([0,(tube_diameter/2)-10,-1])cylinder(60,sh_thread/2,sh_thread/2);
+    rotate([0,0,50])translate([0,(tube_diameter/2)-10,-1])cylinder(60,sh_thread/2,sh_thread/2);
+    rotate([0,0,-50])translate([0,(tube_diameter/2)-10,-1])cylinder(60,sh_thread/2,sh_thread/2);
 }
 

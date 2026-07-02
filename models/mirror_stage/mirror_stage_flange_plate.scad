@@ -1,4 +1,5 @@
-$fn=64;
+$fa=1;
+$fs=0.5;
 
 sh_through = 4;
 sh_countersink = 3;
@@ -67,7 +68,7 @@ module flange() {
 
 conn_box_width = 10;
 
-rotate([90,0,0])difference(){
+translate([-ifd/2,0,0])rotate([90,0,0])difference(){
     union() {
         translate([0,0,-50/2])flange();
         translate([ifd,0,-50/2])flange();

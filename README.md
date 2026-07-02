@@ -11,6 +11,8 @@ This project would not have been possible without the work of the team at FairSc
 ## Non-printable parts required
 
 - 2x 8mm ID, 14mm OD, 0.5mm thick washer (stainless steel preferably, although copper crush washers also work)
+- ~50 M3 16mm countersunk hex bolts
+- ~50 M3 4-6mm brass threaded inserts
 - 2x 6x2mm o-ring
 - 1x 12x2mm o-ring
 - 2x 10x2mm o-ring
@@ -21,12 +23,25 @@ This project would not have been possible without the work of the team at FairSc
 - Standard microscope slide (75x26x1mm)
 - 2x 25mm diameter CO2 laser cutter Molybdenum mirrors
 - Piece (75x26x2mm) of clear acrylic or polycarbonate with two 5mm holes drilled 50mm apart, centered
-- Single segment (10-30mm) of white LED strip with power supply
+- Single segment (10-30mm) of 12v white LED strip
 - Peristaltic pump with 2mm silicone tube fittings
 - Standard optical microscope condenser
 - Standard Plan 10/0.25 Objective with RMS thread (must NOT be infinity-corrected)
 - Raspberry Pi 3 B+ (or Later) and power supply
 - Raspberry Pi Camera Module 3
+- 12V 2A power supply
+- 2x step-down DC-DC converters 12V input 5V 2A(minimum) output
+
+## Notes on printing
+
+All components have been printed successfully on a stock Creality Ender 3. For most pieces, the default print settings are 0.4mm layer heights with the "SUPERDRAFT" speed preset in Prusa Slicer. The only exceptions are:
+
+- slide/optical_stage_slide_oring_guide
+- optical_stage/objective_mount
+
+These parts in particular were printed with 0.2mm layer heights on the "NORMAL" preset.
+
+Tolerances are built in to most designs, and will be suitable for most consumer 3D printers, but if you need to change them, look for a variable called "slop_adjust" near the top of the OpenSCAD file. This is used to set the gap between various surfaces that are meant to connect or brush past each other.
 
 ## Why is it called PIPE?
 

@@ -1,4 +1,5 @@
-$fn = 64;
+$fa=1;
+$fs=0.5;
 
 frame_length = 120;
 
