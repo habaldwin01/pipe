@@ -16,8 +16,6 @@ slop_adjust = 0.5;
 
 tube_diameter = 147;
 
-bar_width = tube_diameter - 14;
-
 mirror_module_offset = 0;
 
 on_tube_dia = (tube_diameter / 2) - (slop_adjust * 2) - (shell_thickness/2);

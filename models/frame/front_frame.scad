@@ -16,7 +16,10 @@ slop_adjust = 0.5;
 
 tube_diameter = 147;
 
-bar_width = tube_diameter - 14;
+
+pcb_offset = -60;
+
+//circle_truncation_width = sqrt((((tube_diameter/2) - shell_thickness - (slop_adjust))^2) - ((130/2)^2)) * 2;
 
 mirror_module_offset = 0;
 
@@ -45,16 +48,27 @@ module extra_stage_mount(){
     }
 }
 
+//bar_width = sqrt((((tube_diameter/2) - shell_thickness - (slop_adjust))^2) - ((50/2)^2)) * 2;
+
 difference(){
     union() {
         difference() {
             cylinder(10,(tube_diameter/2-slop_adjust),(tube_diameter/2-slop_adjust));
             translate([0,0,-1])cylinder(22,(tube_diameter/2-slop_adjust)-shell_thickness,(tube_diameter/2-slop_adjust)-shell_thickness);
         }
-        translate([-bar_width/2,50/2 + slop_adjust,0])cube([bar_width,shell_thickness,10]);
-        translate([-bar_width/2,-50/2 - slop_adjust - shell_thickness,0])cube([bar_width,shell_thickness,10]);
         
         
+        intersection(){
+            union(){
+                // horizontal bars
+                translate([-tube_diameter/2,50/2 + slop_adjust,0])cube([tube_diameter,shell_thickness,10]);
+                translate([-tube_diameter/2,-50/2 - slop_adjust - shell_thickness,0])cube([tube_diameter,shell_thickness,10]);
+                
+                translate([-tube_diameter/2,50/2 + slop_adjust,0])cube([tube_diameter,10,shell_thickness]);
+                translate([-tube_diameter/2,-50/2 - slop_adjust - 10,0])cube([tube_diameter,10,shell_thickness]);
+            }
+            cylinder(10,(tube_diameter/2-slop_adjust),(tube_diameter/2-slop_adjust));
+        }
         
         // mount points for condenser
         hull() {
@@ -66,29 +80,19 @@ difference(){
             translate([ifd/2,40/2,0])cylinder(10,9/2,9/2);
         }
         
-        // supports for condenser mount
+        // mount points for main PCB
         hull() {
-            rotate([0,0,-90+support_angle])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
-            translate([31,-(50/2) - slop_adjust - (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            translate([(pcb_offset/2) - (20/2),-50/2 - 1 - slop_adjust,0])cube([20,1,4]);
+            translate([pcb_offset/2,-40/2,0])cylinder(4,9/2,9/2);
         }
+        translate([pcb_offset/2,-40/2,0])cylinder(6,7/2,7/2);
         hull() {
-            rotate([0,0,90-support_angle])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
-            translate([31,(50/2) + slop_adjust + (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
+            translate([(pcb_offset/2) - (20/2),50/2 + slop_adjust,0])cube([20,1,4]);
+            translate([pcb_offset/2,40/2,0])cylinder(4,9/2,9/2);
         }
-        hull() {
-            rotate([0,0,-90-support_angle])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
-            translate([-31,-(50/2) - slop_adjust - (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
-        }
-        hull() {
-            rotate([0,0,90+support_angle])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
-            translate([-31,(50/2) + slop_adjust + (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
-        }
-        hull() {
-            translate([-31,(50/2) + slop_adjust + (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
-            translate([-31,-(50/2) - slop_adjust - (shell_thickness/2),0])cylinder(10,shell_thickness/2,shell_thickness/2);
-        }
+        translate([pcb_offset/2,40/2,0])cylinder(6,7/2,7/2);
         
-        
+
         // mount points for top carrier
         hull() {
             rotate([0,0,90+15])translate([on_tube_dia,0,0])cylinder(10,shell_thickness/2,shell_thickness/2);
@@ -117,9 +121,17 @@ difference(){
         rotate([0,0,180+45])foot_mount();
         
         rotate([0,0,180])extra_stage_mount();
-        rotate([0,0,-50])extra_stage_mount();
-        rotate([0,0,50])extra_stage_mount();
+        rotate([0,0,-60])extra_stage_mount();
+        rotate([0,0,60])extra_stage_mount();
     }
+    
+    // hole for access to RPI ports
+    //hull(){
+    //    translate([-50/2,40+10/2,-1])cylinder(100,5,5);
+    //    translate([50/2,40+10/2,-1])cylinder(100,5,5);
+    //    translate([-50/2,40-10/2,-1])cylinder(100,5,5);
+    //    translate([50/2,40-10/2,-1])cylinder(100,5,5);
+    //}
 
     // holes for condenser mount
     translate([mirror_module_offset,0,0]) union() {
@@ -127,6 +139,12 @@ difference(){
         translate([ifd/2,-40/2,8])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
         translate([ifd/2,40/2,-1])cylinder(60,sh_through/2,sh_through/2);
         translate([ifd/2,40/2,8])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
+    }
+    
+    // holes for PCB mount
+    translate([pcb_offset,0,0]) union() {
+        translate([ifd/2,-40/2,-1])cylinder(60,sh_thread/2,sh_thread/2);
+        translate([ifd/2,40/2,-1])cylinder(60,sh_thread/2,sh_thread/2);
     }
 
     // holes for top rail mount
@@ -146,7 +164,7 @@ difference(){
     rotate([0,0,180+45])foot_holes();
     
     rotate([0,0,180])translate([0,(tube_diameter/2)-10,-1])cylinder(60,sh_thread/2,sh_thread/2);
-    rotate([0,0,50])translate([0,(tube_diameter/2)-10,-1])cylinder(60,sh_thread/2,sh_thread/2);
-    rotate([0,0,-50])translate([0,(tube_diameter/2)-10,-1])cylinder(60,sh_thread/2,sh_thread/2);
+    rotate([0,0,60])translate([0,(tube_diameter/2)-10,-1])cylinder(60,sh_thread/2,sh_thread/2);
+    rotate([0,0,-60])translate([0,(tube_diameter/2)-10,-1])cylinder(60,sh_thread/2,sh_thread/2);
 }
 
