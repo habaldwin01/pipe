@@ -4,11 +4,9 @@
 
 The PIPE is an almost fully 3D-printable pumped fluid microscope targeting particles in the range of 10-500 micron. As designed, it requires ***zero*** specialist components, with everything being either 3D-printable, readily avalaible to purchase on sites like eBay, or quickly made with a hacksaw and drill.
 
-![Early prototype of the PIPE](./printed_prototype.jpg)
-Early prototype of the PIPE
+**Side-by-side comparison of the resolution of a PIPE prototype vs the IFCB:**
 
-![Example side-by-side comparison of the resolution of the PIPE vs the IFCB](./printed_prototype.jpg)
-Side-by-side comparison of the resolution of a PIPE prototype vs the IFCB
+![Example side-by-side comparison of the resolution of the PIPE vs the IFCB](./cal_demo.png)
 
 ## Licence and acknowledgements
 
@@ -48,6 +46,10 @@ All components have been printed successfully on a stock Creality Ender 3. For m
 These parts in particular were printed with 0.2mm layer heights on the "NORMAL" preset.
 
 Tolerances are built in to most designs, and will be suitable for most consumer 3D printers, but if you need to change them, look for a variable called "slop_adjust" near the top of the OpenSCAD file. This is used to set the gap between various surfaces that are meant to connect or brush past each other.
+
+### Photo of an early prototype of the PIPE
+
+![Early prototype of the PIPE](./printed_prototype.jpg)
 
 ## Why is it called PIPE?
 
