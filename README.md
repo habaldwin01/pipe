@@ -4,6 +4,12 @@
 
 The PIPE is an almost fully 3D-printable pumped fluid microscope targeting particles in the range of 10-500 micron. As designed, it requires ***zero*** specialist components, with everything being either 3D-printable, readily avalaible to purchase on sites like eBay, or quickly made with a hacksaw and drill.
 
+![Early prototype of the PIPE](./printed_prototype.jpg)
+Early prototype of the PIPE
+
+![Example side-by-side comparison of the resolution of the PIPE vs the IFCB](./printed_prototype.jpg)
+Side-by-side comparison of the resolution of a PIPE prototype vs the IFCB
+
 ## Licence and acknowledgements
 
 This project would not have been possible without the work of the team at FairScope, creators of the [PlanktoScope](https://github.com/fairscope/PlanktoScope). The PIPE is heavily inspired by the PlanktoScope, and borrows some pieces of its design. All physical designs for the PIPE are therefore also CERN OHL-S V2 licensed, and you are free to adapt and re-use the designs in accordance with the licence.
